@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import Navbar from "../components/layout/Navbar";
 import type { Language } from "../types/language";
+import Footer from "../components/layout/Footer";
 
 function Home() {
   // Controla o idioma atual do site.
@@ -15,17 +16,20 @@ function Home() {
   }
 
   return (
-    <div id="home" className="min-h-screen bg-background text-brand-700">
+    <div 
+    id="home" 
+    className="min-h-screen flex flex-col bg-background text-brand-700">
       <Navbar
         language={language}
         onLanguageChange={setLanguage}
         onContactClick={handleOpenContactModal}
       />
 
-      <main>
+      <main className="flex-1">
         <section id="about" />
         <section id="projects" />
       </main>
+      <Footer />
     </div>
   );
 }
