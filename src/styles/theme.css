@@ -1,23 +1,17 @@
-@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+Display:wght@400;500;600;700;800&display=swap");
 @import "tailwindcss";
 
 /* Tokens do projeto */
 @theme {
   /* Fontes */
-  --font-primary: "Playfair Display", serif;
+  --font-primary: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-title: "Noto Serif Display", serif;
 
   /* Cores principais */
-  --color-primary: #1a2b56;
-  --color-accent: #002b99;
+  --color-primary: #373a3c;
+  --color-accent: #1da1f2;
   --color-background: #f5f9fa;
-  
-
-  /* Cores auxiliares */
-  
-
-  /* Raios */
-
 
   /* Sombras */
-  --shadow-soft: 0 18px 60px rgba(0, 43, 153, 0.12);
+  --shadow-soft: 0 18px 60px rgba(29, 161, 242, 0.12);
 }

@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState, type MouseEvent } from "react";
 import { Github, Instagram, Linkedin, Mail } from "lucide-react";
+
 import alissaLogo from "../../assets/logos/alissa-logo.svg";
 import { navbarContent } from "../../data/navbarContent";
 import type { Language } from "../../types/language";
@@ -152,121 +153,123 @@ function Navbar({
   return (
     <>
       {/* Header fixo da navegação */}
-      <header className="fixed inset-x-0 top-0 z-50 bg-background">
-        <div className="mx-auto flex w-full max-w-[1440px] items-center justify-between px-6 py-6 md:px-10 lg:px-16">
-          {/* Marca / Home: clicar na imagem ou no nome leva ao topo */}
-          <a
-            href="#home"
-            onClick={handleGoHome}
-            aria-label={language === "pt-BR" ? "Ir para o início" : "Go to home"}
-            className="flex shrink-0 items-center gap-3"
-          >
-            <img
-              src={alissaLogo}
-              alt=""
-              aria-hidden="true"
-              className="h-10 w-10 object-contain md:h-12 md:w-12"
-            />
-
-            <span className="font-primary text-[1.2rem] font-bold text-primary transition-colors duration-300 hover:text-accent md:text-[1.35rem]">
-              Alissa Sousa
-            </span>
-          </a>
-
-          {/* Navegação desktop: Sobre, Projetos e Contato */}
-          <div className="hidden items-center gap-8 md:flex md:gap-10 lg:gap-14">
-            <nav
-              aria-label={
-                language === "pt-BR" ? "Navegação principal" : "Main navigation"
-              }
-              className="flex items-center gap-8 md:gap-10 lg:gap-14"
+      <header className="fixed inset-x-0 top-0 z-50 bg-transparent">
+        <div className="mx-auto w-full max-w-[1440px] px-6 py-6 md:px-10 lg:px-16">
+          <div className="flex items-center justify-between">
+            {/* Marca / Home: clicar na imagem ou no nome leva ao topo */}
+            <a
+              href="#home"
+              onClick={handleGoHome}
+              aria-label={language === "pt-BR" ? "Ir para o início" : "Go to home"}
+              className="flex shrink-0 items-center gap-2"
             >
-              {navigationItems.map((item) => {
-                const isActive = activeSection === item.id;
+              <img
+                src={alissaLogo}
+                alt=""
+                aria-hidden="true"
+                className="h-9 w-9 object-contain md:h-10 md:w-10"
+              />
 
-                return (
-                  <a
-                    key={item.id}
-                    href={item.href}
-                    onClick={(event) => handleNavigationClick(event, item.id)}
-                    className="group relative font-primary text-[1.2rem] font-semibold text-primary transition-opacity duration-300 hover:opacity-80"
-                  >
-                    {item.label}
+              <span className="font-primary text-[1.2rem] font-bold text-primary transition-colors duration-300 hover:text-accent md:text-[1.rem]">
+                Alissa Sousa
+              </span>
+            </a>
 
-                    {/* Linha inferior suave exibida apenas no hover */}
-                    <span
-                      className={`absolute left-0 top-full mt-1 block h-[3px] w-full origin-left bg-accent/20 transition-transform duration-300 ease-out ${
-                        isActive
-                          ? "scale-x-0"
-                          : "scale-x-0 group-hover:scale-x-100"
-                      }`}
-                    />
-
-                    {/* Linha inferior permanente da seção ativa */}
-                    <span
-                      className={`absolute left-0 top-full mt-1 block h-[3px] w-full origin-left bg-accent transition-transform duration-300 ease-out ${
-                        isActive ? "scale-x-100" : "scale-x-0"
-                      }`}
-                    />
-                  </a>
-                );
-              })}
-
-              {/* Item Contato */}
-              <button
-                type="button"
-                onClick={handleContactClick}
-                className="group relative font-primary text-[1.2rem] font-semibold text-primary transition-opacity duration-300 hover:opacity-80"
+            {/* Navegação desktop: Sobre, Projetos e Contato */}
+            <div className="hidden md:flex md:items-center">
+              <nav
+                aria-label={
+                  language === "pt-BR" ? "Navegação principal" : "Main navigation"
+                }
+                className="flex items-center"
               >
-                {content.contact}
+                {navigationItems.map((item) => {
+                  const isActive = activeSection === item.id;
 
-                {/* Linha inferior suave no hover */}
-                <span
-                  className={`absolute left-0 top-full mt-1 block h-[3px] w-full origin-left bg-accent/20 transition-transform duration-300 ease-out ${
-                    activeSection === "contact"
-                      ? "scale-x-0"
-                      : "scale-x-0 group-hover:scale-x-100"
+                  return (
+                    <a
+                      key={item.id}
+                      href={item.href}
+                      onClick={(event) => handleNavigationClick(event, item.id)}
+                      className="group relative px-5 py-3 font-primary text-[1rem] font-semibold text-primary transition-opacity duration-300 hover:opacity-80"
+                    >
+                      {item.label}
+
+                      {/* Linha inferior suave exibida apenas no hover */}
+                      <span
+                        className={`absolute bottom-0 left-5 right-5 block h-[3px] origin-left bg-accent/20 transition-transform duration-300 ease-out ${
+                          isActive
+                            ? "scale-x-0"
+                            : "scale-x-0 group-hover:scale-x-100"
+                        }`}
+                      />
+
+                      {/* Linha inferior permanente da seção ativa */}
+                      <span
+                        className={`absolute bottom-0 left-5 right-5 block h-[3px] origin-left bg-accent transition-transform duration-300 ease-out ${
+                          isActive ? "scale-x-100" : "scale-x-0"
+                        }`}
+                      />
+                    </a>
+                  );
+                })}
+
+                {/* Item Contato */}
+                <button
+                  type="button"
+                  onClick={handleContactClick}
+                  className="group relative px-5 py-3 font-primary text-[1rem] font-semibold text-primary transition-opacity duration-300 hover:opacity-80"
+                >
+                  {content.contact}
+
+                  {/* Linha inferior suave no hover */}
+                  <span
+                    className={`absolute bottom-0 left-5 right-5 block h-[3px] origin-left bg-accent/20 transition-transform duration-300 ease-out ${
+                      activeSection === "contact"
+                        ? "scale-x-0"
+                        : "scale-x-0 group-hover:scale-x-100"
+                    }`}
+                  />
+
+                  {/* Linha inferior permanente quando Contato está ativo */}
+                  <span
+                    className={`absolute bottom-0 left-5 right-5 block h-[3px] origin-left bg-accent transition-transform duration-300 ease-out ${
+                      activeSection === "contact" ? "scale-x-100" : "scale-x-0"
+                    }`}
+                  />
+                </button>
+              </nav>
+
+              {/* Alternador de idioma no desktop */}
+              <div className="ml-2 flex items-center gap-3 font-primary text-[1rem] text-primary lg:ml-4">
+                <button
+                  type="button"
+                  onClick={() => onLanguageChange("en")}
+                  aria-label={content.changeToEnglish}
+                  className={`transition-opacity duration-300 ${
+                    language === "en"
+                      ? "text-primary"
+                      : "text-primary/65 hover:text-primary"
                   }`}
-                />
+                >
+                  EN
+                </button>
 
-                {/* Linha inferior permanente quando Contato está ativo */}
-                <span
-                  className={`absolute left-0 top-full mt-1 block h-[3px] w-full origin-left bg-accent transition-transform duration-300 ease-out ${
-                    activeSection === "contact" ? "scale-x-100" : "scale-x-0"
+                <span className="text-primary/60">|</span>
+
+                <button
+                  type="button"
+                  onClick={() => onLanguageChange("pt-BR")}
+                  aria-label={content.changeToPortuguese}
+                  className={`transition-opacity duration-300 ${
+                    language === "pt-BR"
+                      ? "text-primary"
+                      : "text-primary/65 hover:text-primary"
                   }`}
-                />
-              </button>
-            </nav>
-
-            {/* Alternador de idioma no desktop */}
-            <div className="flex items-center gap-3 font-primary text-[1rem] text-primary">
-              <button
-                type="button"
-                onClick={() => onLanguageChange("en")}
-                aria-label={content.changeToEnglish}
-                className={`transition-opacity duration-300 ${
-                  language === "en"
-                    ? "text-primary"
-                    : "text-primary/65 hover:text-primary"
-                }`}
-              >
-                EN
-              </button>
-
-              <span className="text-primary/60">|</span>
-
-              <button
-                type="button"
-                onClick={() => onLanguageChange("pt-BR")}
-                aria-label={content.changeToPortuguese}
-                className={`transition-opacity duration-300 ${
-                  language === "pt-BR"
-                    ? "text-primary"
-                    : "text-primary/65 hover:text-primary"
-                }`}
-              >
-                PT
-              </button>
+                >
+                  PT
+                </button>
+              </div>
             </div>
           </div>
         </div>
