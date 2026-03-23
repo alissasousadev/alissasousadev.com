@@ -12,6 +12,9 @@
   --color-accent: #1da1f2;
   --color-background: #f5f9fa;
 
+  /* Cores secundarias */
+  --color-black: #000000;
+
   /* Sombras */
   --shadow-soft: 0 18px 60px rgba(29, 161, 242, 0.12);
 }

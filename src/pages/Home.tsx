@@ -19,7 +19,7 @@ function Home() {
   return (
     <div 
     id="home" 
-    className="min-h-screen flex flex-col bg-background text-brand-700">
+    className="min-h-screen flex flex-col text-brand-700">
       <Navbar
         language={language}
         onLanguageChange={setLanguage}

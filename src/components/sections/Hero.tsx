@@ -1,4 +1,5 @@
 import type { Language } from "../../types/language";
+import HeroScene from "../three/HeroScene";
 
 /* Props da seção Hero */
 interface HeroProps {
@@ -8,8 +9,7 @@ interface HeroProps {
 /* Estrutura do conteúdo traduzido da Hero */
 type HeroContent = {
   greeting: string;
-  titleFilled: string;
-  titleOutlined: string;
+  title: string;
   description: string;
   aboutLabel: string;
 };
@@ -18,89 +18,68 @@ type HeroContent = {
 const heroCopy: Record<Language, HeroContent> = {
   "pt-BR": {
     greeting: "OLÁ, MEU NOME É ALISSA",
-    titleFilled: "Developer",
-    titleOutlined: "Full Stack",
+    title: "Developer Full Stack.",
     description:
       "Desenvolvo sites e aplicações web com foco em performance, usabilidade e identidade visual, criando experiências digitais funcionais, intuitivas e pensadas para gerar resultado.",
     aboutLabel: "Ir para a seção sobre mim",
   },
   en: {
     greeting: "HELLO, MY NAME IS ALISSA",
-    titleFilled: "Developer",
-    titleOutlined: "Full Stack",
+    title: "Developer Full Stack.",
     description:
       "I develop websites and web applications focused on performance, usability, and visual identity, creating digital experiences that are functional, intuitive, and designed to deliver results.",
     aboutLabel: "Go to about section",
   },
 };
 
-/* Classes reutilizadas do título */
+/* Classe reutilizada do título principal */
 const titleTextClass =
-  "shrink-0 text-[52px] leading-[0.95] sm:text-[68px] md:text-[78px] lg:text-[82px] lg:leading-[82px] xl:text-[94px] xl:leading-[94px]";
-
-/* Espaço visual usado entre palavras e antes do ponto final */
-const titleSpacerClass = "inline-block w-2 sm:w-3 lg:w-3 xl:w-4";
+  "text-[52px] leading-[0.95] sm:text-[68px] md:text-[78px] lg:text-[82px] lg:leading-[82px] xl:text-[94px] xl:leading-[94px]";
 
 /* Hero principal da Home */
 function Hero({ language }: HeroProps) {
-  /* Seleciona o conteúdo conforme o idioma atual */
   const content = heroCopy[language];
 
   return (
-    /* Seção inicial da página */
     <section
       id="home"
       aria-label={language === "pt-BR" ? "Seção inicial" : "Hero section"}
-      className="overflow-x-clip bg-background"
+      className="relative min-h-screen overflow-hidden"
     >
-      {/*Container principal */}
-      <div className="mx-auto w-full max-w-[1440px] px-6 py-6 md:px-10 lg:px-16">
-        {/*Área principal da Hero */}
-        <div className="flex min-h-[calc(100vh-88px)] items-start pt-12 pb-16 sm:pt-16 sm:pb-20 lg:pt-30 lg:pb-24">
-          {/*Bloco textual*/}
-          <div className="w-full max-w-[1120px]">
-            {/* Subtítulo superior*/}
-            <a
-              href="#about"
-              className="mb-3 inline-block font-primary text-[15px] font-bold uppercase tracking-[0.08em] text-accent transition-opacity duration-300 hover:opacity-80 focus:outline-none focus-visible:opacity-80 sm:text-[17px] sm:leading-[28px] lg:mb-4 lg:text-[19px] lg:leading-[31px]"
-              aria-label={content.aboutLabel}
-            >
-              {content.greeting}
-            </a>
+      {/* Background da Hero: imagem inicial + vídeo em Three.js */}
+      <div className="absolute inset-0 z-0">
+        <HeroScene
+          posterSrc="/media/hero/hero-cover.jpeg"
+          videoSrc="/media/hero/hero-video.mp4"
+        />
+      </div>
 
-            {/* Wrapper do título */}
-            <div className="w-full overflow-hidden">
-              {/*Título principal */}
-              <h1 className="flex flex-wrap items-baseline gap-y-2 font-title font-semibold tracking-[-0.04em] text-primary lg:flex-nowrap">
-                {/* Palavra principal preenchida */}
-                <span className={titleTextClass}>{content.titleFilled}</span>
+      {/* Camada de contraste para proteger a leitura do texto */}
+      <div className="absolute inset-0 z-10 bg-background/35" />
 
-                {/* Espaço visual entre as duas palavras do título */}
-                <span className={titleSpacerClass} aria-hidden="true" />
+      {/* Conteúdo da Hero */}
+      <div className="relative z-20 mx-auto flex min-h-screen w-full max-w-[1440px] items-center px-6 pt-[120px] pb-16 md:px-10 lg:px-16 lg:pt-[140px] lg:pb-24">
+        <div className="w-full max-w-[1120px]">
+          {/* Chamada superior */}
+          <a
+            href="#about"
+            aria-label={content.aboutLabel}
+            className="mb-3 inline-block font-primary text-[15px] font-bold uppercase tracking-[0.08em] text-accent transition-opacity duration-300 hover:opacity-80 focus:outline-none focus-visible:opacity-80 sm:text-[17px] sm:leading-[28px] lg:mb-4 lg:text-[19px] lg:leading-[31px]"
+          >
+            {content.greeting}
+          </a>
 
-                {/* Palavra secundária com contorno */}
-                <span className={titleTextClass}>
-                  <span
-                    className="text-transparent"
-                    style={{ WebkitTextStroke: "1.2px var(--color-primary)" }}
-                  >
-                    {content.titleOutlined}
-                  </span>
-
-                  {/* Espaço visual antes do ponto final */}
-                  <span className={titleSpacerClass} aria-hidden="true" />
-
-                  {/* Ponto final do título */}
-                  <span className="text-primary">.</span>
-                </span>
-              </h1>
-            </div>
-
-            {/*Texto de apoio */}
-            <p className="mt-3 max-w-none font-primary font-light text-[22px] leading-[34px] text-primary/75 sm:text-[26px] sm:leading-[38px] lg:mt-8 lg:text-[32px] lg:leading-[45px]">
-              {content.description}
-            </p>
+          {/* Título principal */}
+          <div className="w-full overflow-hidden">
+            <h1 className="font-title font-semibold tracking-[-0.04em] text-primary">
+              <span className={titleTextClass}>{content.title}</span>
+            </h1>
           </div>
+
+          {/* Texto de apoio */}
+          <p className="mt-3 w-full font-primary text-[22px] leading-[34px] font-light text-primary/75 sm:text-[26px] sm:leading-[38px] lg:mt-8 lg:text-[32px] lg:leading-[45px]">
+          {content.description}
+          </p>
         </div>
       </div>
     </section>

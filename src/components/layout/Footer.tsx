@@ -2,17 +2,17 @@ import { Github, Instagram, Linkedin, Mail } from "lucide-react";
 
 function Footer() {
   return (
-    <footer className="mt-20 border-t border-black/10 bg-[var(--color-background)]">
+    <footer className="border-t border-black/10 bg-background">
       {/* Container principal do footer */}
-      <div className="mx-auto flex w-full max-w-7xl items-end justify-between px-6 py-4 sm:px-8 md:py-5">
+      <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-6 py-4 sm:px-8 md:py-5">
         
         {/* Bloco esquerdo: ano + nome */}
-        <div className="flex flex-col leading-tight">
-          <span className="font-primary text-sm text-[var(--color-primary)] md:text-base">
+        <div className="flex flex-col leading-none">
+          <span className="font-primary text-sm text-primary md:text-base">
             © {new Date().getFullYear()}
           </span>
 
-          <p className="font-primary text-lg text-[var(--color-primary)] md:text-xl">
+          <p className="mt-1 font-primary text-lg text-primary md:text-xl">
             Alissa Sousa
           </p>
         </div>
@@ -24,7 +24,7 @@ function Footer() {
             target="_blank"
             rel="noreferrer"
             aria-label="GitHub"
-            className="text-[var(--color-primary)] transition-colors duration-300 hover:text-[var(--color-accent)]"
+            className="text-primary transition-colors duration-300 hover:text-accent"
           >
             <Github className="h-5 w-5 md:h-[22px] md:w-[22px]" strokeWidth={1.75} />
           </a>
@@ -34,7 +34,7 @@ function Footer() {
             target="_blank"
             rel="noreferrer"
             aria-label="LinkedIn"
-            className="text-[var(--color-primary)] transition-colors duration-300 hover:text-[var(--color-accent)]"
+            className="text-primary transition-colors duration-300 hover:text-accent"
           >
             <Linkedin className="h-5 w-5 md:h-[22px] md:w-[22px]" strokeWidth={1.75} />
           </a>
@@ -42,7 +42,7 @@ function Footer() {
           <a
             href="mailto:alissasousa.dev@outlook.com"
             aria-label="Email"
-            className="text-[var(--color-primary)] transition-colors duration-300 hover:text-[var(--color-accent)]"
+            className="text-primary transition-colors duration-300 hover:text-accent"
           >
             <Mail className="h-5 w-5 md:h-[22px] md:w-[22px]" strokeWidth={1.75} />
           </a>
@@ -52,7 +52,7 @@ function Footer() {
             target="_blank"
             rel="noreferrer"
             aria-label="Instagram"
-            className="text-[var(--color-primary)] transition-colors duration-300 hover:text-[var(--color-accent)]"
+            className="text-primary transition-colors duration-300 hover:text-accent"
           >
             <Instagram className="h-5 w-5 md:h-[22px] md:w-[22px]" strokeWidth={1.75} />
           </a>

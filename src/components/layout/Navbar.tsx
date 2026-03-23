@@ -153,7 +153,7 @@ function Navbar({
   return (
     <>
       {/* Header fixo da navegação */}
-      <header className="fixed inset-x-0 top-0 z-50 bg-transparent">
+      <header className="fixed inset-x-0 top-0 z-50">
         <div className="mx-auto w-full max-w-[1440px] px-6 py-6 md:px-10 lg:px-16">
           <div className="flex items-center justify-between">
             {/* Marca / Home: clicar na imagem ou no nome leva ao topo */}
@@ -331,7 +331,7 @@ function Navbar({
         {/* Círculo expansivo que revela o fundo do menu */}
         <div className="absolute inset-0 overflow-hidden">
           <div
-            className={`absolute right-0 top-0 h-[310vmax] w-[220vmax] translate-x-1/2 -translate-y-1/2 rounded-full bg-primary transition-transform duration-[950ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
+            className={`absolute right-0 top-0 h-[310vmax] w-[220vmax] translate-x-1/2 -translate-y-1/2 rounded-full bg-black transition-transform duration-[950ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
               isMobileMenuOpen ? "scale-100" : "scale-0"
             }`}
           />
@@ -434,9 +434,6 @@ function Navbar({
           </div>
         </div>
       </div>
-
-      {/* Espaço reservado para compensar a altura do header fixo */}
-      <div className="h-[96px] md:h-[104px]" />
     </>
   );
 }
