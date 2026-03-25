@@ -4,33 +4,47 @@ import Navbar from "../components/layout/Navbar";
 import type { Language } from "../types/language";
 import Footer from "../components/layout/Footer";
 import Hero from "../components/sections/Hero";
+import ContactModal from "../components/contact/ContactModal";
 
 function Home() {
   // Controla o idioma atual do site.
   const [language, setLanguage] = useState<Language>("pt-BR");
 
-  // Função temporária até o modal de contato ser criado.
+  // Controla abertura e fechamento do modal de contato.
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+
+  // Abre o modal quando clicar em "Contato" na navbar.
   function handleOpenContactModal() {
-    window.alert( language === "pt-BR" ? 
-      "Aqui vamos abrir o modal de contato." : 
-      "The contact modal will open here." );
+    setIsContactModalOpen(true);
+  }
+
+  // Fecha o modal.
+  function handleCloseContactModal() {
+    setIsContactModalOpen(false);
   }
 
   return (
-    <div 
-    id="home" 
-    className="min-h-screen flex flex-col text-brand-700">
+    <div id="home" className="flex min-h-screen flex-col text-brand-700">
       <Navbar
         language={language}
         onLanguageChange={setLanguage}
         onContactClick={handleOpenContactModal}
       />
+
       <Hero language={language} />
+
       <main className="flex-1">
         <section id="about" />
         <section id="projects" />
       </main>
+
       <Footer />
+
+      <ContactModal
+        isOpen={isContactModalOpen}
+        onClose={handleCloseContactModal}
+        language={language}
+      />
     </div>
   );
 }
