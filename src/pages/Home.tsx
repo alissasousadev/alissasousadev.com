@@ -5,6 +5,7 @@ import type { Language } from "../types/language";
 import Footer from "../components/layout/Footer";
 import Hero from "../components/sections/Hero";
 import ContactModal from "../components/contact/ContactModal";
+import About from "../components/sections/About";
 
 function Home() {
   // Controla o idioma atual do site.
@@ -32,6 +33,7 @@ function Home() {
       />
 
       <Hero language={language} />
+      <About language={language} />
 
       <main className="flex-1">
         <section id="about" />
