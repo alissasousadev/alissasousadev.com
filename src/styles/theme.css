@@ -12,10 +12,26 @@
   --color-accent: #1da1f2;
   --color-background: #f5f9fa;
 
-  /* Cores secundarias */
+  /* Cores secundárias */
   --color-black: #000000;
   --color-white: #ffffff;
+  --color-tech-background: #d9e2fe;
+  --color-tech-card: #f8f8f8;
+  --color-tech-icon: #1f3566;
 
   /* Sombras */
   --shadow-soft: 0 18px 60px rgba(29, 161, 242, 0.12);
+}
+
+/* Classe comum de CSS: fica FORA do @theme */
+.projects-gradient {
+  background: linear-gradient(
+    to bottom,
+    #d9e2fe 0%,
+    #d9deee 18%,
+    #d8d8df 42%,
+    #b4b5bc 68%,
+    #4f535c 88%,
+    #000000 100%
+  );
 }
