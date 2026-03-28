@@ -1,53 +1,48 @@
 import { useState } from "react";
-
-import Navbar from "../components/layout/Navbar";
-import type { Language } from "../types/language";
-import Footer from "../components/layout/Footer";
-import Hero from "../components/sections/Hero";
 import ContactModal from "../components/contact/ContactModal";
+import Footer from "../components/layout/Footer";
+import Navbar from "../components/layout/Navbar";
 import About from "../components/sections/About";
+import Hero from "../components/sections/Hero";
+import Projects from "../components/sections/Projects";
+import Technologies from "../components/sections/Technologies";
+import type { Language } from "../types/language";
+import ContactCTA from "../components/sections/ContactCTA";
 
-function Home() {
-  // Controla o idioma atual do site.
-  const [language, setLanguage] = useState<Language>("pt-BR");
+/* Props da Home */
+interface HomeProps {
+  language: Language;
+  onLanguageChange: (language: Language) => void;
+}
 
-  // Controla abertura e fechamento do modal de contato.
+function Home({ language, onLanguageChange }: HomeProps) {
+  /* Controla a abertura do modal de contato */
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
 
-  // Abre o modal quando clicar em "Contato" na navbar.
-  function handleOpenContactModal() {
-    setIsContactModalOpen(true);
-  }
-
-  // Fecha o modal.
-  function handleCloseContactModal() {
-    setIsContactModalOpen(false);
-  }
-
   return (
-    <div id="home" className="flex min-h-screen flex-col text-brand-700">
+    <>
       <Navbar
         language={language}
-        onLanguageChange={setLanguage}
-        onContactClick={handleOpenContactModal}
+        onLanguageChange={onLanguageChange}
+        onContactClick={() => setIsContactModalOpen(true)}
       />
 
-      <Hero language={language} />
-      <About language={language} />
-
-      <main className="flex-1">
-        <section id="about" />
-        <section id="projects" />
+      <main>
+        <Hero language={language} />
+        <About language={language} />
+        <Technologies language={language} />
+        <Projects language={language} />
+        <ContactCTA language={language} />
       </main>
 
       <Footer />
 
       <ContactModal
-        isOpen={isContactModalOpen}
-        onClose={handleCloseContactModal}
         language={language}
+        isOpen={isContactModalOpen}
+        onClose={() => setIsContactModalOpen(false)}
       />
-    </div>
+    </>
   );
 }
 

@@ -8,16 +8,16 @@ interface ContactCTAProps {
 
 const content = {
   "pt-BR": {
-    title: "Vamos conversar sobre o seu projeto?",
+    title: "Traga sua ideia. Vamos transformar em uma experiência digital.",
     description:
-      "Estou disponível para oportunidades, freelas e novas conexões profissionais.",
-    button: "Entrar em contato",
+      "Se você precisa de um site, landing page ou aplicação web com identidade visual, usabilidade e propósito, entre em contato para conversarmos sobre o seu projeto.",
+    button: "Solicitar orçamento",
   },
   en: {
-    title: "Shall we talk about your project?",
+    title: "Bring your idea. Let’s turn it into a digital experience.",
     description:
-      "I am available for opportunities, freelance work, and new professional connections.",
-    button: "Get in touch",
+      "If you need a website, landing page, or web application built with visual identity, usability, and purpose, get in touch so we can talk about your project.",
+    button: "Request a quote",
   },
 } satisfies Record<
   Language,
@@ -36,23 +36,28 @@ function ContactCTA({ language }: ContactCTAProps) {
     <>
       <section
         id="contact"
-        className="mx-auto flex w-full max-w-7xl flex-col items-center px-6 py-24 text-center"
+        className="w-full bg-black px-6 py-24 sm:px-8 sm:py-28 lg:px-16 lg:py-32"
       >
-        <h2 className="font-title text-4xl font-semibold text-primary sm:text-5xl">
-          {copy.title}
-        </h2>
+        <div className="mx-auto flex w-full max-w-6xl flex-col items-center text-center">
+          {/* Título principal */}
+          <h2 className="max-w-6xl font-primary text-[2.2rem] leading-[1.08] font-light tracking-[-0.04em] text-white sm:text-[3rem] md:text-[4rem] lg:text-[4.5rem]">
+            {copy.title}
+          </h2>
 
-        <p className="mt-4 max-w-2xl font-primary text-base leading-8 text-primary/75">
-          {copy.description}
-        </p>
+          {/* Texto de apoio */}
+          <p className="mt-6 max-w-3xl font-primary text-sm leading-7 text-white/70 sm:text-base sm:leading-8 md:text-lg">
+            {copy.description}
+          </p>
 
-        <button
-          type="button"
-          onClick={() => setIsModalOpen(true)}
-          className="mt-8 inline-flex h-14 items-center justify-center rounded-full bg-primary px-8 font-primary text-sm font-semibold uppercase tracking-[0.08em] text-white transition hover:bg-accent"
-        >
-          {copy.button}
-        </button>
+          {/* Botão principal */}
+          <button
+            type="button"
+            onClick={() => setIsModalOpen(true)}
+            className="mt-10 inline-flex min-h-14 items-center justify-center rounded-full border border-white/15 bg-white px-8 font-primary text-sm font-semibold uppercase tracking-[0.08em] text-black transition duration-300 hover:-translate-y-0.5 hover:bg-accent hover:text-white"
+          >
+            {copy.button}
+          </button>
+        </div>
       </section>
 
       <ContactModal

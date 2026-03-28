@@ -10,7 +10,7 @@ interface AboutProps {
 /* Conteúdo da seção em dois idiomas */
 const aboutContent = {
   "pt-BR": {
-    title: "sobre mim",
+    title: "Sobre mim",
     buttonLabel: "currículo",
     buttonHref: "/curriculo-alissa-sousa.pdf",
     alt: "Retrato de Alissa Sousa",
@@ -21,7 +21,7 @@ const aboutContent = {
     ],
   },
   en: {
-    title: "about me",
+    title: "About me",
     buttonLabel: "resume",
     buttonHref: "/resume-alissa-sousa.pdf",
     alt: "Portrait of Alissa Sousa",
