@@ -1,6 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ContactModal from "../components/contact/ContactModal";
-import Footer from "../components/layout/Footer";
 import Navbar from "../components/layout/Navbar";
 import About from "../components/sections/About";
 import Hero from "../components/sections/Hero";
@@ -19,6 +18,24 @@ function Home({ language, onLanguageChange }: HomeProps) {
   /* Controla a abertura do modal de contato */
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
 
+useEffect(() => {
+    const returnSection = sessionStorage.getItem("homeReturnSection");
+
+    if (returnSection === "projects") {
+      const timeout = window.setTimeout(() => {
+        const section = document.getElementById("projects");
+
+        if (section) {
+          section.scrollIntoView({ behavior: "auto", block: "start" });
+        }
+
+        sessionStorage.removeItem("homeReturnSection");
+      }, 80);
+
+      return () => window.clearTimeout(timeout);
+    }
+  }, []);
+
   return (
     <>
       <Navbar
@@ -30,12 +47,14 @@ function Home({ language, onLanguageChange }: HomeProps) {
       <main>
         <Hero language={language} />
         <About language={language} />
+        <div className="tech-projects-gradient">
         <Technologies language={language} />
         <Projects language={language} />
+        </div>
         <ContactCTA language={language} />
       </main>
 
-      <Footer />
+      
 
       <ContactModal
         language={language}

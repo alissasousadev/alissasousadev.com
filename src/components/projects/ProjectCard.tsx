@@ -2,7 +2,6 @@ import { Github, Globe } from "lucide-react";
 import type { Language } from "../../types/language";
 import type { Project, ProjectLinkType } from "../../types/Project";
 
-
 /* Props do card de projeto */
 interface ProjectCardProps {
   project: Project;
@@ -38,7 +37,7 @@ function ProjectCard({ project, language }: ProjectCardProps) {
       <div className="relative h-[210px] overflow-hidden rounded-t-[2.25rem] sm:h-[220px] lg:h-[230px]">
         <img
           src={project.image}
-          alt={`Preview do projeto ${project.title}`}
+          alt={`Preview do projeto ${project.title[language]}`}
           className="
             h-full w-full object-cover object-top
             transition-transform duration-500 ease-out
@@ -65,7 +64,7 @@ function ProjectCard({ project, language }: ProjectCardProps) {
             md:text-[2.35rem]
           "
         >
-          {project.title}
+          {project.title[language]}
         </h3>
 
         <p
@@ -87,7 +86,7 @@ function ProjectCard({ project, language }: ProjectCardProps) {
               href={link.url}
               target="_blank"
               rel="noreferrer"
-              aria-label={`${link.label} do projeto ${project.title}`}
+              aria-label={`${link.label} do projeto ${project.title[language]}`}
               className="
                 transition-all duration-300 ease-out
                 hover:scale-110 hover:text-accent

@@ -8,30 +8,24 @@
   --font-title: "Noto Serif Display", serif;
 
   /* Cores principais */
-  --color-primary: #373a3c;
-  --color-accent: #1da1f2;
-  --color-background: #f5f9fa;
-
-  /* Cores secundárias */
   --color-black: #000000;
   --color-white: #ffffff;
-  --color-tech-background: #d9e2fe;
-  --color-tech-card: #f8f8f8;
-  --color-tech-icon: #1f3566;
+  --color-accent: #ff1447;
 
   /* Sombras */
   --shadow-soft: 0 18px 60px rgba(29, 161, 242, 0.12);
 }
 
-/* Classe comum de CSS: fica FORA do @theme */
-.projects-gradient {
+/* Degradê contínuo: Technologies -> Projects */
+.tech-projects-gradient {
   background: linear-gradient(
     to bottom,
-    #d9e2fe 0%,
-    #d9deee 18%,
-    #d8d8df 42%,
-    #b4b5bc 68%,
-    #4f535c 88%,
+    #ffffff 0%,
+    #f3f3f3 14%,
+    #e3e3e3 30%,
+    #c9c9c9 48%,
+    #9a9a9a 66%,
+    #5a5a5a 84%,
     #000000 100%
   );
 }

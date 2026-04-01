@@ -1,7 +1,7 @@
 import TechnologyCard from "../technology/TechnologyCard";
-import TechnologyVisual from "../technology/TechnologyVisual";
-import { technologyCategories } from "../../data/technologies";
+import { technologyCategories } from "../../data/technologiesContent";
 import type { Language } from "../../types/language";
+import TechnologyIconWall from "../technology/TechnologyIconWall";
 
 interface TechnologiesProps {
   language: Language;
@@ -9,11 +9,13 @@ interface TechnologiesProps {
 
 const technologiesContent = {
   "pt-BR": {
+    eyebrow: "STACK TÉCNICA",
     title: "Tecnologias principais",
     description:
       "Desenvolvo interfaces e aplicações web utilizando tecnologias que equilibram performance, usabilidade e identidade visual.",
   },
   en: {
+    eyebrow: "TECH STACK",
     title: "Core technologies",
     description:
       "I develop interfaces and web applications using technologies that balance performance, usability, and visual identity.",
@@ -21,6 +23,7 @@ const technologiesContent = {
 } satisfies Record<
   Language,
   {
+    eyebrow: string;
     title: string;
     description: string;
   }
@@ -33,8 +36,8 @@ function Technologies({ language }: TechnologiesProps) {
     <section
       id="technologies"
       className="
-        relative w-full overflow-hidden bg-[#D9E2FE]
-        scroll-mt-24 lg:h-screen lg:scroll-mt-32
+        relative w-full overflow-hidden bg-transparent
+        lg:h-screen
       "
     >
       <div
@@ -55,6 +58,17 @@ function Technologies({ language }: TechnologiesProps) {
           {/* Coluna esquerda */}
           <div className="flex w-full max-w-[680px] flex-col gap-10 lg:gap-12">
             <header className="max-w-[660px]">
+              <div className="mb-5 flex items-center gap-3 sm:mb-6">
+                <span className="h-px w-8 bg-accent sm:w-10" />
+                <span
+                className="
+                font-primary text-[0.78rem] font-medium uppercase tracking-[0.24em]
+                text-accent sm:text-[0.82rem]"
+                >
+                  {content.eyebrow}
+                   </span>
+              </div>
+              
               <h2
                 className="
                   font-title font-semibold text-black
@@ -94,7 +108,7 @@ function Technologies({ language }: TechnologiesProps) {
           {/* Coluna direita */}
           <div className="hidden lg:block relative">
             
-              <TechnologyVisual />
+              <TechnologyIconWall />
             </div>
           </div>
         </div>

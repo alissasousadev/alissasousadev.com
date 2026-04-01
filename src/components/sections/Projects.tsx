@@ -1,7 +1,6 @@
-import { Link } from "react-router-dom";
-
 import type { Language } from "../../types/language";
 import ProjectsPreview from "../projects/ProjectsPreview";
+import Button from "../ui/Button";
 
 /* Props da seção Projects */
 interface ProjectsProps {
@@ -32,23 +31,22 @@ const sectionContent = {
 function Projects({ language }: ProjectsProps) {
   const content = sectionContent[language];
 
+function handleProjectsNavigation() {
+  sessionStorage.setItem("homeReturnSection", "projects");
+}
+
   return (
     <section
       id="projects"
       className="
-        relative w-full overflow-hidden
-        pt-14 pb-20
-        sm:pt-16 sm:pb-24
+        relative w-full overflow-hidden bg-transparent
+        pt-14 pb-10
+        sm:pt-16 sm:pb-12
         lg:min-h-screen lg:pt-28 lg:pb-24
       "
     >
-      {/* Fundo em degradê vindo do theme.css */}
-      <div
-        aria-hidden="true"
-        className="projects-gradient absolute inset-0 z-0"
-      />
 
-      {/* Container principal alinhado com a navbar */}
+      {/* Container principal */}
       <div className="relative z-10 mx-auto w-full max-w-[1440px] px-6 md:px-10 lg:px-16">
         {/* Cabeçalho e CTA do desktop */}
         <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
@@ -81,24 +79,18 @@ function Projects({ language }: ProjectsProps) {
 
           {/* Botão no desktop, ao lado direito do cabeçalho */}
           <div className="hidden lg:flex lg:justify-end">
-            <Link
-              to="/projects"
-              className="
-                inline-flex items-center gap-3 rounded-full
-                border border-black/10 bg-black px-7 py-4
-                font-primary text-base font-medium text-white
-                transition-all duration-300 ease-out
-                hover:-translate-y-0.5 hover:bg-primary
-              "
+            <Button 
+            href="/projects" 
+            variant="dark"
+            onClick={handleProjectsNavigation}
             >
-              <span>{content.button}</span>
-              <span aria-hidden="true">→</span>
-            </Link>
+            {content.button}
+          </Button>
           </div>
         </div>
 
         {/* Cards com botão no final apenas no mobile/tablet */}
-        <div className="mt-10 sm:mt-12">
+        <div className="mt-10 sm:mt-8">
           <ProjectsPreview
             language={language}
             showInlineButton={true}

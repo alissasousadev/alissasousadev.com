@@ -1,6 +1,6 @@
 /* Barra de rolagem da página inteira */
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
   scrollbar-gutter: stable;
   scrollbar-width: thin;
 }
@@ -11,11 +11,11 @@ html::-webkit-scrollbar {
 }
 
 html::-webkit-scrollbar-track {
-  background: #f5f9fa;
+  background: #ffffff;
 }
 
 html::-webkit-scrollbar-thumb {
-  background-color: #002B99;
+  background-color: #7a7a7a;
   border-radius: 9999px;
-  border: 2px solid #f5f9fa;
+  border: 2px solid #ffffff;
 }

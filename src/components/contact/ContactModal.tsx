@@ -262,7 +262,8 @@ function ContactModal({ isOpen, onClose, language }: ContactModalProps) {
               value={formData.name}
               onChange={handleChange}
               placeholder={copy.namePlaceholder}
-              className="h-12 w-full rounded-xl border border-white/10 bg-white/8 px-4 font-primary text-sm text-white outline-none transition placeholder:text-white/40 focus:border-accent focus:bg-white/12"
+              className="h-12 w-full rounded-xl border border-white/10 bg-white/8 px-4 font-primary text-sm text-white outline-none 
+              transition placeholder:text-white/40 focus:border-accent focus:bg-white/12"
             />
 
             {errors.name && (
@@ -288,7 +289,8 @@ function ContactModal({ isOpen, onClose, language }: ContactModalProps) {
               value={formData.email}
               onChange={handleChange}
               placeholder={copy.emailPlaceholder}
-              className="h-12 w-full rounded-xl border border-white/10 bg-white/8 px-4 font-primary text-sm text-white outline-none transition placeholder:text-white/40 focus:border-accent focus:bg-white/12"
+              className="h-12 w-full rounded-xl border border-white/10 bg-white/8 px-4 font-primary text-sm text-white outline-none 
+              transition placeholder:text-white/40 focus:border-accent focus:bg-white/12"
             />
 
             {errors.email && (
@@ -314,7 +316,8 @@ function ContactModal({ isOpen, onClose, language }: ContactModalProps) {
               value={formData.message}
               onChange={handleChange}
               placeholder={copy.messagePlaceholder}
-              className="min-h-[100px] w-full resize-none rounded-xl border border-white/10 bg-white/8 px-4 py-3 font-primary text-sm text-white outline-none transition placeholder:text-white/40 focus:border-accent focus:bg-white/12"
+              className="min-h-[100px] w-full resize-none rounded-xl border border-white/10 bg-white/8 px-4 py-3 font-primary text-sm 
+              text-white outline-none transition placeholder:text-white/40 focus:border-accent focus:bg-white/12"
             />
 
             {errors.message && (
@@ -328,7 +331,9 @@ function ContactModal({ isOpen, onClose, language }: ContactModalProps) {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="mt-1 flex h-12 w-full items-center justify-center rounded-xl bg-white px-6 font-primary text-sm font-semibold uppercase tracking-[0.08em] text-primary transition hover:scale-[1.01] hover:bg-white/90 disabled:cursor-not-allowed disabled:opacity-70"
+            className="mt-1 flex h-12 w-full items-center justify-center rounded-xl bg-white px-6 font-primary text-sm font-semibold 
+            uppercase tracking-[0.08em] text-black transition hover:scale-[1.01] hover:bg-white/90 disabled:cursor-not-allowed 
+            disabled:opacity-70"
           >
             {isSubmitting ? copy.sending : copy.button}
           </button>
@@ -347,7 +352,8 @@ function ContactModal({ isOpen, onClose, language }: ContactModalProps) {
                   target={href.startsWith("mailto:") ? "_self" : "_blank"}
                   rel="noreferrer"
                   aria-label={label}
-                  className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/8 text-white/80 transition hover:border-accent hover:text-accent"
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/8 
+                  text-white/80 transition hover:border-accent hover:text-accent"
                 >
                   <Icon size={17} />
                 </a>

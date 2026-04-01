@@ -1,6 +1,6 @@
-import { ArrowUpRight } from "lucide-react"
 import aboutProfile from "../../assets/about/about-profile.webp"
 import type { Language } from "../../types/language"
+import Button from "../ui/Button"
 
 /* Props da seção Sobre */
 interface AboutProps {
@@ -48,7 +48,7 @@ function About({ language }: AboutProps) {
 
   return (
     <section
-      id="sobre"
+      id="about"
       className="relative isolate overflow-hidden bg-black"
       aria-labelledby="about-title"
     >
@@ -132,37 +132,15 @@ function About({ language }: AboutProps) {
 
             {/* Botão principal */}
             <div className="mt-8">
-              <a
-                href={content.buttonHref}
-                target="_blank"
-                rel="noreferrer"
-                className="
-                  group inline-flex items-center gap-3 rounded-full
-                  bg-white px-4 py-2 text-sm font-medium text-black
-                  transition-all duration-300
-                  hover:-translate-y-px hover:shadow-soft
-                  focus:outline-none focus:ring-2 focus:ring-accent/60
-                  focus:ring-offset-2 focus:ring-offset-black
-                  sm:px-5 sm:py-2.5 sm:text-base
-                "
+              <Button
+              href={content.buttonHref}
+              target="_blank"
+              rel="noreferrer"
+              variant="light"
               >
-                <span className="font-primary uppercase tracking-[0.02em]">
-                  {content.buttonLabel}
-                </span>
-
-                {/* Cápsula do ícone */}
-                <span
-                  className="
-                    flex h-8 w-8 items-center justify-center rounded-full
-                    bg-black text-white transition-transform duration-300
-                    group-hover:-translate-y-0.5 group-hover:translate-x-0.5
-                    sm:h-9 sm:w-9
-                  "
-                >
-                  <ArrowUpRight size={16} />
-                </span>
-              </a>
-            </div>
+                {content.buttonLabel}
+                </Button>
+              </div>
           </div>
 
           {/* Coluna auxiliar para manter a composição no desktop */}

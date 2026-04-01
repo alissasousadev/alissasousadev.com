@@ -1,5 +1,4 @@
-import { useState } from "react";
-
+import { useLayoutEffect, useState } from "react";
 import ContactModal from "../components/contact/ContactModal";
 import Footer from "../components/layout/Footer";
 import Navbar from "../components/layout/Navbar";
@@ -15,12 +14,12 @@ interface MoreProjectsProps {
 
 const pageContent = {
   "pt-BR": {
-    title: "Mais projetos",
+    title: "Meus projetos",
     description:
       "Desenvolvo projetos com foco em organização, clareza visual, usabilidade e estrutura limpa de código, buscando unir estética, funcionalidade e uma boa experiência de navegação.",
   },
   en: {
-    title: "More projects",
+    title: "My projects",
     description:
       "I develop projects focused on organization, visual clarity, usability, and clean code structure, aiming to combine aesthetics, functionality, and a solid browsing experience.",
   },
@@ -41,6 +40,15 @@ function MoreProjects({
 
   const content = pageContent[language];
 
+  useLayoutEffect(() => {
+  window.history.scrollRestoration = "manual";
+  window.scrollTo(0, 0);
+
+  return () => {
+    window.history.scrollRestoration = "auto";
+  };
+}, []);
+
   return (
     <>
       <Navbar
@@ -56,10 +64,10 @@ function MoreProjects({
           sm:pt-32 sm:pb-24
         "
       >
-        {/* Fundo em degradê vindo do theme.css */}
+        {/* Fundo em degradê */}
         <div
           aria-hidden="true"
-          className="projects-gradient absolute inset-0 z-0"
+          className="tech-projects-gradient absolute inset-0 z-0"
         />
 
         {/* Conteúdo principal */}

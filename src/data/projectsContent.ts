@@ -1,74 +1,83 @@
 import type { Project } from "../types/Project";
 
-
 /* Lista principal de projetos do portfólio */
 export const projectsContent: Project[] = [
   {
     id: 1,
-    title: "Domposer",
+    title: {
+      "pt-BR": "FoodFlow",
+      en: "FoodFlow",
+    },
     description: {
       "pt-BR":
-        "Domposer é um construtor de sites com interface visual que permite organizar HTML e CSS com rapidez, enviar arquivos, baixar projetos e salvar trabalhos com um fluxo de edição prático.",
-      en: "Domposer is a website builder with a visual interface that allows users to quickly organize HTML and CSS, upload files, download projects, and save work with a practical editing flow.",
+        "O FoodFlow é um sistema de Delivery com uma aplicação web moderna desenvolvida em React + TypeScript + Vite, projetada para gerenciar produtos, categorias e interações do usuário de forma eficiente.",
+      en: "FoodFlow is a delivery platform with a modern web application built with React + TypeScript + Vite, designed to efficiently manage products, categories, and user interactions.",
     },
-    image: "/media/projects/domposer.png",
+    image: "/media/projects/foodflow.png",
     featured: true,
     links: [
       {
         label: "deploy",
-        url: "https://seu-deploy.com",
+        url: "https://sistemadelivery.vercel.app/",
       },
       {
         label: "github",
-        url: "https://github.com/seuusuario/domposer",
+        url: "https://github.com/GenStudents/SistemaDeDeliveyFrontEnd",
       },
     ],
   },
   {
     id: 2,
-    title: "Bay.js",
+    title: {
+      "pt-BR": "RHConnect",
+      en: "RHConnect",
+    },
     description: {
       "pt-BR":
-        "Uma biblioteca leve de web components, focada em simplicidade, reutilização e integração fácil em projetos, sem exigir uma configuração complexa.",
-      en: "A lightweight web components library focused on simplicity, reusability, and easy integration into projects without requiring a complex setup.",
+        "O Sistema de Gestão de RH é uma plataforma desenvolvida para transformar e modernizar a forma como as empresas gerenciam seus Recursos Humanos.",
+      en: "The HR Management System is a platform developed to transform and modernize the way companies manage their Human Resources.",
     },
-    image: "/media/projects/bayjs.png",
+    image: "/media/projects/rhconnect.png",
     featured: true,
     links: [
       {
         label: "deploy",
-        url: "https://seu-deploy.com",
+        url: "https://sistema-rh-frontend.vercel.app/",
       },
       {
         label: "github",
-        url: "https://github.com/seuusuario/bayjs",
+        url: "https://github.com/GenStudents/sistema_RH_Front_end",
       },
     ],
   },
   {
     id: 3,
-    title: "Cookiemunch",
+    title: {
+      "pt-BR": "Games Store",
+      en: "Games Store",
+    },
     description: {
       "pt-BR":
-        "Um plugin minimalista de cookies que ajuda usuários a escolher quais cookies aceitar ou recusar, com opções de personalização para tema e integração em diferentes interfaces.",
-      en: "A minimal cookie plugin that helps users choose which cookies to accept or decline, with customization options for theme and integration into different interfaces.",
+        "Este projeto representa o desenvolvimento de uma API RESTful para uma Loja de Games, permitindo o gerenciamento de Categorias e Produtos, com relacionamento entre as entidades e validações de regras de negócio.",
+      en: "This project represents the development of a RESTful API for a game store, allowing the management of categories and products, with entity relationships and business rule validations.",
     },
-    image: "/media/projects/cookiemunch.png",
+    image: "/media/projects/gamestore.png",
     featured: true,
     links: [
       {
-        label: "deploy",
-        url: "https://seu-deploy.com",
-      },
-      {
         label: "github",
-        url: "https://github.com/seuusuario/cookiemunch",
+        url: "https://github.com/alissasousadev/game-store-backend",
       },
     ],
   },
+
+  /* Projetos da página - mais projetos */
   {
     id: 4,
-    title: "FitTrack",
+    title: {
+      "pt-BR": "FitTrack",
+      en: "FitTrack",
+    },
     description: {
       "pt-BR":
         "Aplicação voltada ao gerenciamento de treinos, combinando organização, usabilidade e uma estrutura visual limpa para rotinas fitness.",
@@ -78,17 +87,20 @@ export const projectsContent: Project[] = [
     links: [
       {
         label: "deploy",
-        url: "https://seu-deploy.com",
+        url: "https://fittrack-frontend-ten.vercel.app/",
       },
       {
         label: "github",
-        url: "https://github.com/seuusuario/fittrack",
+        url: "https://github.com/GenStudents/sistema_FitTrack_Front_end",
       },
     ],
   },
   {
     id: 5,
-    title: "Blog Pessoal API",
+    title: {
+      "pt-BR": "API Blog Pessoal",
+      en: "Personal Blog API",
+    },
     description: {
       "pt-BR":
         "API REST desenvolvida com NestJS, autenticação e modelagem relacional de dados, criada com foco em arquitetura limpa e manutenção.",
@@ -98,17 +110,20 @@ export const projectsContent: Project[] = [
     links: [
       {
         label: "deploy",
-        url: "https://seu-deploy.com",
+        url: "https://blogpessoal-zypu.onrender.com",
       },
       {
         label: "github",
-        url: "https://github.com/seuusuario/blog-api",
+        url: "https://github.com/alissasousadev/personal-blog-backend",
       },
     ],
   },
   {
     id: 6,
-    title: "CRUD Farmácia",
+    title: {
+      "pt-BR": "Farmácia CRUD",
+      en: "Pharmacy CRUD",
+    },
     description: {
       "pt-BR":
         "Projeto backend para gerenciamento de categorias e produtos com TypeScript, NestJS e modelagem relacional.",
@@ -117,12 +132,8 @@ export const projectsContent: Project[] = [
     image: "/media/projects/crud-farmacia.png",
     links: [
       {
-        label: "deploy",
-        url: "https://seu-deploy.com",
-      },
-      {
         label: "github",
-        url: "https://github.com/seuusuario/crud-farmacia",
+        url: "https://github.com/alissasousadev/pharmacy-management-backend",
       },
     ],
   },

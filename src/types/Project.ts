@@ -7,7 +7,10 @@ export interface ProjectLink {
 
 export interface Project {
   id: number;
-  title: string;
+  title: {
+    "pt-BR": string;
+    en: string;
+  };
   description: {
     "pt-BR": string;
     en: string;

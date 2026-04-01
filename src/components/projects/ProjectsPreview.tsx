@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
 import { featuredProjects } from "../../data/projectsContent";
 import type { Language } from "../../types/language";
+import Button from "../ui/Button";
 import ProjectCard from "./ProjectCard";
 
 /* Props do preview de projetos */
@@ -30,6 +30,10 @@ function ProjectsPreview({
 }: ProjectsPreviewProps) {
   const content = previewContent[language];
 
+function handleProjectsNavigation() {
+  sessionStorage.setItem("homeReturnSection", "projects");
+}
+
   return (
     <div className="w-full">
       {/* Grid principal dos cards */}
@@ -41,20 +45,14 @@ function ProjectsPreview({
 
       {/* Botão em fluxo normal: aparece só no mobile/tablet */}
       {showInlineButton && (
-        <div className="mt-8 flex justify-start sm:mt-10 sm:justify-end lg:hidden">
-          <Link
-            to="/projects"
-            className="
-              inline-flex items-center gap-3 rounded-full
-              border border-black/10 bg-black px-7 py-4
-              font-primary text-base font-medium text-white
-              transition-all duration-300 ease-out
-              hover:-translate-y-0.5 hover:bg-primary
-            "
+        <div className="mt-8 flex justify-center sm:mt-10 lg:hidden">
+          <Button 
+          href="/projects" 
+          variant="dark"
+          onClick={handleProjectsNavigation}
           >
-            <span>{content.button}</span>
-            <span aria-hidden="true">→</span>
-          </Link>
+            {content.button}
+          </Button>
         </div>
       )}
     </div>
