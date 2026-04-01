@@ -1,7 +1,6 @@
 import { useMemo, useState, type ChangeEvent, type FormEvent } from "react";
 import { Github, Instagram, Linkedin, Mail } from "lucide-react";
 import { toast } from "react-toastify";
-
 import Modal from "../ui/Modal";
 import type { Language } from "../../types/language";
 
@@ -111,7 +110,7 @@ const socialLinks = [
     icon: Instagram,
   },
   {
-    href: "alissasousa.dev@outlook.com",
+    href: "mailto:alissasousa.dev@outlook.com",
     label: "Email",
     icon: Mail,
   },
@@ -120,23 +119,29 @@ const socialLinks = [
 /* Validação dos campos */
 function validateForm(
   values: ContactFormData,
-  messages: (typeof content)["pt-BR"]["errors"]
+  messages: (typeof content)["pt-BR"]["errors"],
+  language: Language
 ): ContactFormErrors {
-  const errors: ContactFormErrors = {};
+  const validationErrors: ContactFormErrors = {};
 
   if (values.name.trim().length < 3) {
-    errors.name = messages.name;
+    validationErrors.name = messages.name;
   }
 
   if (!emailRegex.test(values.email.trim())) {
-    errors.email = messages.email;
+    validationErrors.email = messages.email;
   }
 
-  if (values.message.trim().length < 10) {
-    errors.message = messages.message;
+  if (values.message.trim().length === 0) {
+    validationErrors.message =
+      language === "pt-BR"
+        ? "A mensagem não pode ser vazia."
+        : "Message cannot be empty.";
+  } else if (values.message.trim().length < 10) {
+    validationErrors.message = messages.message;
   }
 
-  return errors;
+  return validationErrors;
 }
 
 function ContactModal({ isOpen, onClose, language }: ContactModalProps) {
@@ -177,55 +182,60 @@ function ContactModal({ isOpen, onClose, language }: ContactModalProps) {
 
   /* Valida e envia os dados sem sair da página */
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
+  event.preventDefault();
 
-    const validationErrors = validateForm(formData, copy.errors);
-    setErrors(validationErrors);
+  setErrors({});
 
-    const firstErrorField = (
-      ["name", "email", "message"] as Array<keyof ContactFormData>
-    ).find((field) => validationErrors[field]);
+  const validationErrors = validateForm(formData, copy.errors, language);
+  setErrors(validationErrors);
 
-    if (firstErrorField) {
-      document.getElementById(firstErrorField)?.focus();
-      return;
-    }
+  const firstErrorField = (
+    ["name", "email", "message"] as Array<keyof ContactFormData>
+  ).find((field) => validationErrors[field]);
 
-    setIsSubmitting(true);
-
-    try {
-      const response = await fetch(
-        "https://formsubmit.co/ajax/d9378643358be017bb9cb1a0031b1717",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
-          body: JSON.stringify({
-            name: formData.name,
-            email: formData.email,
-            message: formData.message,
-            _captcha: "false",
-            _subject:
-              language === "pt-BR"
-                ? "Novo contato do portfólio"
-                : "New portfolio contact",
-          }),
-        }
-      );
-
-      if (!response.ok) {
-        throw new Error("Request failed");
-      }
-
-      toast.success(copy.successMessage);
-      resetAndCloseModal();
-    } catch {
-      setIsSubmitting(false);
-      toast.error(copy.errorMessage);
-    }
+  if (firstErrorField) {
+    document.getElementById(firstErrorField)?.focus();
+    return;
   }
+
+  setIsSubmitting(true);
+
+  try {
+    const payload = new FormData();
+    payload.append("name", formData.name.trim());
+    payload.append("email", formData.email.trim());
+    payload.append("message", formData.message.trim());
+    payload.append("_captcha", "false");
+    payload.append(
+      "_subject",
+      language === "pt-BR"
+        ? "Novo contato do portfólio"
+        : "New portfolio contact"
+    );
+
+    const response = await fetch(
+      "https://formsubmit.co/ajax/a5cb4cfc81091ca4bb4d6af509bff19b",
+      {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+        },
+        body: payload,
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error("Request failed");
+    }
+
+    toast.success(copy.successMessage);
+    resetAndCloseModal();
+  } catch (error) {
+    console.error("Form submit error:", error);
+    setIsSubmitting(false);
+    toast.error(copy.errorMessage);
+  }
+}
 
   return (
     <Modal
