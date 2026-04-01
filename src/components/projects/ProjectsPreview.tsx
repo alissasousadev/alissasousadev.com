@@ -48,7 +48,7 @@ function handleProjectsNavigation() {
         <div className="mt-8 flex justify-center sm:mt-10 lg:hidden">
           <Button 
           href="/projects" 
-          variant="dark"
+          variant="light"
           onClick={handleProjectsNavigation}
           >
             {content.button}
