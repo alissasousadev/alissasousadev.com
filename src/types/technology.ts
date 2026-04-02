@@ -23,6 +23,7 @@ export interface TechnologyItem {
 export interface TechnologyCategory {
   id: string;
   title: Record<Language, string>;
+  description: Record<Language, string>;
   iconKey: "frontend" | "backend" | "database" | "tools";
   items: TechnologyItem[];
 }

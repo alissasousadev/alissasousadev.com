@@ -73,81 +73,45 @@ function TechnologyCard({ category, language }: TechnologyCardProps) {
   return (
     <article
       className="
-        group relative min-h-[150px] overflow-visible rounded-[1.7rem]
-        border border-white/60 bg-white/38 px-5 pb-4 pt-7
-        shadow-[0_10px_30px_rgba(120,130,180,0.14)]
-        backdrop-blur-[12px]
-        transition-all duration-300 ease-out
-        hover:-translate-y-[2px]
-        hover:border-white/75 hover:bg-white/44
-        hover:shadow-[0_14px_36px_rgba(120,130,180,0.18)]
-        sm:min-h-[156px] sm:rounded-[1.9rem] sm:px-6 sm:pb-5 sm:pt-8
-        lg:min-h-[158px] lg:rounded-[2rem]
+        h-full min-h-[248px] w-full rounded-[28px] border border-black/8 bg-white
+        px-6 py-6 shadow-[0_18px_42px_rgba(55,58,60,0.08)]
       "
     >
-      {/* Camada de brilho suave do card */}
-      <div
-        className="
-          pointer-events-none absolute inset-0 rounded-[inherit]
-          bg-[linear-gradient(180deg,rgba(255,255,255,0.38)_0%,rgba(255,255,255,0.20)_100%)]
-        "
-      />
+      <header className="mb-5">
+        <div className="flex items-center gap-3">
+          <div
+            className="
+              flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl
+              bg-accent/8 ring-1 ring-inset ring-accent/12
+            "
+          >
+            <CategoryIcon
+              className="h-[1.15rem] w-[1.15rem] text-accent"
+              strokeWidth={2}
+            />
+          </div>
 
-      {/* Anel interno sutil */}
-      <div
-        className="
-          pointer-events-none absolute inset-0 rounded-[inherit]
-          ring-1 ring-inset ring-white/35
-        "
-      />
+          <h3
+            className="
+              font-title text-[1.9rem] font-semibold leading-none text-black
+            "
+          >
+            {category.title[language]}
+          </h3>
+        </div>
 
-      {/* Ícone da categoria */}
-      <div
-        className="
-          absolute -left-3 -top-3 z-10 flex h-14 w-14 items-center justify-center
-          rounded-full border border-white/65
-          bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.92),rgba(232,235,245,0.82))]
-          shadow-[0_10px_24px_rgba(130,140,180,0.18)]
-          backdrop-blur-[10px]
-          transition-all duration-300 ease-out
-          group-hover:-translate-y-[2px]
-          sm:-left-4 sm:-top-4 sm:h-15 sm:w-15
-        "
-      >
-        <div
+        <p
           className="
-            absolute inset-[1px] rounded-full
-            bg-[linear-gradient(180deg,rgba(255,255,255,0.75),rgba(255,255,255,0.28))]
-          "
-        />
-
-        <CategoryIcon
-          className="relative z-10 h-5 w-5 text-accent sm:h-6 sm:w-6"
-          strokeWidth={2}
-        />
-      </div>
-
-      {/* Cabeçalho do card */}
-      <header className="relative z-[1] mb-4 pl-4 sm:pl-5">
-        <h3
-          className="
-            font-title font-semibold leading-none text-black
-            text-[1.28rem] sm:text-[1.38rem] lg:text-[1.5rem]
+            mt-5 max-w-[420px] font-primary text-[0.98rem] leading-[1.55] text-primary
           "
         >
-          {category.title[language]}
-        </h3>
+          {category.description[language]}
+        </p>
 
-        <span className="mt-2.5 block h-px w-full bg-[#6b6b78]/28" />
+        <span className="mt-5 block h-px w-full bg-black/10" />
       </header>
 
-      {/* Tecnologias em badges compactos */}
-      <div
-        className="
-          relative z-[1] flex flex-wrap items-start gap-2
-          pl-4 sm:pl-5
-        "
-      >
+      <div className="flex flex-wrap items-start gap-2.5">
         {category.items.map((item) => {
           const tech = technologyIcons[item.iconName];
           const TechIcon = tech.icon;
@@ -159,29 +123,23 @@ function TechnologyCard({ category, language }: TechnologyCardProps) {
               title={item.name}
               aria-label={item.name}
               className="
-                inline-flex w-fit max-w-full items-center gap-1.5
-                rounded-[0.55rem]
-                border border-white/72 bg-white/52
-                px-2 py-1
-                shadow-[0_3px_10px_rgba(120,130,180,0.06)]
-                transition-all duration-300 ease-out
+                inline-flex max-w-full items-center gap-2 rounded-xl
+                border border-black/8 bg-[#f8f8f8]
+                px-3 py-2 transition-all duration-300 ease-out
                 hover:-translate-y-[1px]
-                hover:border-white/90 hover:bg-white/76
-                hover:shadow-[0_7px_16px_rgba(120,130,180,0.10)]
+                hover:bg-white
+                hover:shadow-[0_8px_18px_rgba(55,58,60,0.08)]
               "
             >
-              {/* Ícone menor para reduzir o peso visual do badge */}
               <TechIcon
-                className="h-[0.78rem] w-[0.78rem] shrink-0"
+                className="h-[0.9rem] w-[0.9rem] shrink-0"
                 style={{ color: tech.color }}
               />
 
-              {/* Texto menor e menos pesado */}
               <span
                 className="
-                  font-primary text-[0.74rem] font-medium leading-none
-                  tracking-[-0.01em] text-primary/80
-                  transition-colors duration-300
+                  font-primary text-[0.8rem] font-medium leading-none
+                  tracking-[-0.01em] text-primary
                 "
               >
                 {label}
