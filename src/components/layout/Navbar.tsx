@@ -42,8 +42,8 @@ const sectionIds = ["about", "technologies", "projects", "contact"] as const;
 /* Textos da navbar */
 const navbarCopy = {
   "pt-BR": {
-    about: "sobre mim",
-    tech: "tecnologias",
+    about: "sobre",
+    tech: "stack",
     projects: "projetos",
     contact: "contato",
     sayHello: "fale comigo",
@@ -54,8 +54,8 @@ const navbarCopy = {
     goHome: "Ir para o início",
   },
   en: {
-    about: "about me",
-    tech: "tech",
+    about: "about",
+    tech: "stack",
     projects: "projects",
     contact: "contact",
     sayHello: "say hello",

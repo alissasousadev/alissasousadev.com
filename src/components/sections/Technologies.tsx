@@ -9,14 +9,14 @@ interface TechnologiesProps {
 
 const technologiesContent = {
   "pt-BR": {
-    eyebrow: "STACK TÉCNICA",
-    title: "Tecnologias principais",
+    eyebrow: "STACK",
+    title: "Stack principal",
     description:
       "Desenvolvo interfaces e aplicações web utilizando tecnologias que equilibram performance, usabilidade e identidade visual.",
   },
   en: {
-    eyebrow: "TECH STACK",
-    title: "Core technologies",
+    eyebrow: "STACK",
+    title: "Core stack",
     description:
       "I develop interfaces and web applications using technologies that balance performance, usability, and visual identity.",
   },

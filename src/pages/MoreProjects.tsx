@@ -12,13 +12,16 @@ interface MoreProjectsProps {
   onLanguageChange: (language: Language) => void;
 }
 
+/* Conteúdo da página em dois idiomas */
 const pageContent = {
   "pt-BR": {
+    eyebrow: "PROJETOS",
     title: "Meus projetos",
     description:
       "Desenvolvo projetos com foco em organização, clareza visual, usabilidade e estrutura limpa de código, buscando unir estética, funcionalidade e uma boa experiência de navegação.",
   },
   en: {
+    eyebrow: "PROJECTS",
     title: "My projects",
     description:
       "I develop projects focused on organization, visual clarity, usability, and clean code structure, aiming to combine aesthetics, functionality, and a solid browsing experience.",
@@ -26,6 +29,7 @@ const pageContent = {
 } satisfies Record<
   Language,
   {
+    eyebrow: string;
     title: string;
     description: string;
   }
@@ -40,14 +44,15 @@ function MoreProjects({
 
   const content = pageContent[language];
 
+  /* Garante que a página abra sempre no topo */
   useLayoutEffect(() => {
-  window.history.scrollRestoration = "manual";
-  window.scrollTo(0, 0);
+    window.history.scrollRestoration = "manual";
+    window.scrollTo(0, 0);
 
-  return () => {
-    window.history.scrollRestoration = "auto";
-  };
-}, []);
+    return () => {
+      window.history.scrollRestoration = "auto";
+    };
+  }, []);
 
   return (
     <>
@@ -64,35 +69,53 @@ function MoreProjects({
           sm:pt-32 sm:pb-24
         "
       >
-        {/* Fundo em degradê */}
+        {/* Fundo em degradê da página */}
         <div
           aria-hidden="true"
-          className="tech-projects-gradient absolute inset-0 z-0"
+          className="about-projects-gradient absolute inset-0 z-0"
         />
 
         {/* Conteúdo principal */}
         <div className="relative z-10 mx-auto w-full max-w-[1440px] px-6 md:px-10 lg:px-16">
-          {/* Cabeçalho da página */}
-          <header className="max-w-[590px]">
+          {/* Cabeçalho */}
+          <header
+            className="max-w-[760px]"
+            aria-labelledby="more-projects-title"
+          >
+            <div className="mb-5 flex items-center gap-4">
+              {/* Linha decorativa da seção */}
+              <span className="h-px w-12 shrink-0 bg-accent" />
+
+              {/* Nome pequeno da seção */}
+              <span
+                className="
+                  font-primary text-[13px] leading-[20px]
+                  font-semibold uppercase tracking-[0.35em] text-accent
+                "
+              >
+                {content.eyebrow}
+              </span>
+            </div>
+
+            {/* Título principal da página */}
             <h1
+              id="more-projects-title"
               className="
-                font-title font-semibold text-black
-                text-[2.5rem] leading-[0.95]
-                sm:text-[3rem]
-                md:text-[3.3rem]
-                lg:whitespace-nowrap lg:text-[3.7rem]
+                font-title font-semibold tracking-[-0.03em] text-black
+                text-4xl leading-[0.95]
+                sm:text-5xl
+                lg:text-[59px] lg:leading-[56px]
               "
             >
               {content.title}
             </h1>
 
+            {/* Texto de apoio da página */}
             <p
               className="
-                mt-5 max-w-[590px] font-primary text-black
-                text-[0.98rem] leading-[1.5]
-                sm:text-[1rem]
-                md:text-[1.03rem]
-                lg:mt-6 lg:leading-[1.4]
+                mt-5 max-w-[580px]
+                font-primary text-[16px] leading-[23px] text-black/80
+                lg:mt-6
               "
             >
               {content.description}
@@ -102,7 +125,11 @@ function MoreProjects({
           {/* Lista completa de projetos */}
           <section className="mt-10 grid grid-cols-1 gap-8 md:mt-12 md:grid-cols-2 xl:grid-cols-3">
             {moreProjects.map((project) => (
-              <ProjectCard key={project.id} project={project} language={language} />
+              <ProjectCard
+                key={project.id}
+                project={project}
+                language={language}
+              />
             ))}
           </section>
         </div>

@@ -2,7 +2,7 @@ import aboutProfile from "../../assets/about/about-profile.webp"
 import type { Language } from "../../types/language"
 import Button from "../ui/Button"
 
-/* Props da seção Sobre */
+/* Props da seção About */
 interface AboutProps {
   language: Language
 }
@@ -10,7 +10,8 @@ interface AboutProps {
 /* Conteúdo da seção em dois idiomas */
 const aboutContent = {
   "pt-BR": {
-    title: "Sobre mim",
+    eyebrow: "Sobre",
+    title: "Oi.",
     buttonLabel: "currículo",
     buttonHref: "/curriculo-alissa-sousa.pdf",
     alt: "Retrato de Alissa Sousa",
@@ -21,7 +22,8 @@ const aboutContent = {
     ],
   },
   en: {
-    title: "About me",
+    eyebrow: "About",
+    title: "Hey there.",
     buttonLabel: "resume",
     buttonHref: "/resume-alissa-sousa.pdf",
     alt: "Portrait of Alissa Sousa",
@@ -34,6 +36,7 @@ const aboutContent = {
 } satisfies Record<
   Language,
   {
+    eyebrow: string
     title: string
     buttonLabel: string
     buttonHref: string
@@ -42,87 +45,79 @@ const aboutContent = {
   }
 >
 
-/* Seção Sobre */
+/* Seção About */
 function About({ language }: AboutProps) {
   const content = aboutContent[language]
 
   return (
     <section
       id="about"
-      className="relative isolate overflow-hidden bg-black"
+      className="relative overflow-hidden bg-transparent"
       aria-labelledby="about-title"
     >
-      {/* Fundo visual da seção */}
-      <div className="absolute inset-0">
-        <img
+      {/* Bloco superior centralizado: label da seção + título */}
+      <div className="mx-auto w-full max-w-[1440px] px-6 pt-20 md:px-10 lg:px-16 lg:pt-24">
+        <header className="max-w-[760px]">
+          <div className="mb-5 flex items-center gap-4">
+            {/* Linha decorativa da seção */}
+            <span className="h-px w-12 shrink-0 bg-accent" />
+
+            {/* Nome pequeno da seção */}
+            <span
+              className="
+                font-primary text-[0.78rem] font-medium uppercase tracking-[0.24em]
+                text-accent sm:text-[0.82rem]
+              "
+            >
+              {content.eyebrow}
+            </span>
+          </div>
+
+          {/* Título principal mantendo o tamanho anterior */}
+          <h2
+            id="about-title"
+            className="
+              font-title font-semibold text-black
+                  text-[2.5rem] leading-[0.95]
+                  sm:text-[3rem]
+                  md:text-[3.3rem]
+                  lg:whitespace-nowrap lg:text-[3.7rem]
+            "
+          >
+            {content.title}
+          </h2>
+        </header>
+      </div>
+
+      {/* Bloco inferior em largura total para permitir a imagem colada na borda esquerda */}
+      <div
+        className="
+          mt-10 grid items-start gap-10
+          lg:grid-cols-[640px_minmax(0,1fr)]
+          lg:gap-18
+        "
+      >
+        {/* Coluna da imagem */}
+        <div className="w-full">
+          <img
           src={aboutProfile}
           alt={content.alt}
           className="
-            absolute inset-0 h-full w-full object-cover
-            object-[74%_center]
-            sm:object-[76%_center]
-            lg:object-[80%_center]
-          "
-        />
+          block w-full h-auto
+          aspect-[1014/768]
+          object-cover object-left"
+          />
+        </div>
 
-        {/* Base de contraste */}
-        <div className="absolute inset-0 bg-black/30 sm:bg-black/24 lg:bg-black/18" />
-
-        {/* Gradiente principal para legibilidade */}
-        <div
-          className="
-            absolute inset-0
-            bg-gradient-to-r
-            from-black
-            via-black/78
-            to-black/30
-            sm:via-black/62
-            lg:from-black/95
-            lg:via-black/45
-            lg:to-transparent
-          "
-        />
-
-        {/* Camada sutil de profundidade */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_left,rgba(255,255,255,0.05),transparent_38%)]" />
-      </div>
-
-      {/* Container */}
-      <div className="relative mx-auto w-full max-w-[1440px] px-6 md:px-10 lg:px-16">
-        <div
-          className="
-            grid min-h-[100svh] items-center
-            py-24
-            sm:py-24
-            lg:grid-cols-[1.05fr_0.95fr]
-            lg:py-20
-          "
-        >
-          {/* Coluna de texto */}
-          <div className="max-w-[560px] sm:max-w-[600px]">
-            {/* Cabeçalho */}
-            <header className="mb-6 sm:mb-7">
-              <h2
-                id="about-title"
-                className="
-                  font-title font-semibold tracking-[-0.03em] text-white
-                  text-4xl
-                  sm:text-5xl
-                  lg:text-6xl
-                "
-              >
-                {content.title}
-                <span className="text-white">.</span>
-              </h2>
-            </header>
-
-            {/* Texto principal */}
+        {/* Coluna de texto */}
+        <div className="px-6 pb-20 md:px-10 lg:px-0 lg:pr-16 lg:pb-24">
+          <div className="max-w-[720px]">
             <div
               className="
-                space-y-4
-                font-primary text-[15px] leading-7 text-white/88
-                sm:space-y-5 sm:text-base sm:leading-8
-                lg:text-lg lg:leading-8
+                space-y-6
+                font-primary text-[22px] leading-[37px] text-black/80
+                sm:text-lg sm:leading-9
+                lg:text-[1.35rem] lg:leading-[2.3rem]
               "
             >
               {content.paragraphs.map((paragraph) => (
@@ -130,21 +125,18 @@ function About({ language }: AboutProps) {
               ))}
             </div>
 
-            {/* Botão principal */}
-            <div className="mt-8">
+            {/* Botão do currículo */}
+            <div className="mt-8 sm:mt-10">
               <Button
-              href={content.buttonHref}
-              target="_blank"
-              rel="noreferrer"
-              variant="light"
+                href={content.buttonHref}
+                target="_blank"
+                rel="noreferrer"
+                variant="dark"
               >
                 {content.buttonLabel}
-                </Button>
-              </div>
+              </Button>
+            </div>
           </div>
-
-          {/* Coluna auxiliar para manter a composição no desktop */}
-          <div className="hidden lg:block" aria-hidden="true" />
         </div>
       </div>
     </section>

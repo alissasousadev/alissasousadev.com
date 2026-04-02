@@ -46,8 +46,8 @@ useEffect(() => {
 
       <main>
         <Hero language={language} />
+        <div className="about-projects-gradient">
         <About language={language} />
-        <div className="tech-projects-gradient">
         <Technologies language={language} />
         <Projects language={language} />
         </div>

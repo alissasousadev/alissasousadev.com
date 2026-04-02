@@ -16,8 +16,8 @@
   --shadow-soft: 0 18px 60px rgba(29, 161, 242, 0.12);
 }
 
-/* Degradê contínuo: Technologies -> Projects */
-.tech-projects-gradient {
+/* Degradê contínuo: entre About, Technologies e Projects */
+.about-projects-gradient {
   background: linear-gradient(
     to bottom,
     #ffffff 0%,
