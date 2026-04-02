@@ -27,15 +27,15 @@ function ProjectCard({ project, language }: ProjectCardProps) {
   return (
     <article
       className="
-        group flex h-full flex-col rounded-[2rem]
+        group flex h-full flex-col rounded-[1.75rem]
         border border-[#dfe6f3] bg-white
         transition-all duration-300 ease-out
         hover:-translate-y-1 hover:shadow-soft
       "
     >
       {/* Área visual superior */}
-      <div className="px-4 pt-4 sm:px-5 sm:pt-5">
-        <div className="relative h-[180px] overflow-hidden rounded-[1.7rem] sm:h-[190px] lg:h-[200px]">
+      <div className="px-4 pt-4 sm:px-4 sm:pt-4">
+        <div className="relative h-[170px] overflow-hidden rounded-[1.45rem] sm:h-[180px] lg:h-[190px]">
           <img
             src={project.image}
             alt={`Preview do projeto ${project.title[language]}`}
@@ -46,7 +46,7 @@ function ProjectCard({ project, language }: ProjectCardProps) {
             "
           />
 
-          {/* Gradiente branco para integrar a imagem com a base do card */}
+          {/* Gradiente */}
           <div
             className="
               pointer-events-none absolute inset-x-0 bottom-0 h-24
@@ -57,13 +57,13 @@ function ProjectCard({ project, language }: ProjectCardProps) {
       </div>
 
       {/* Conteúdo textual do card */}
-      <div className="flex flex-1 flex-col px-6 pb-6 pt-5 sm:px-7 sm:pb-7">
+      <div className="flex flex-1 flex-col px-5 pb-5 pt-4 sm:px-6 sm:pb-6">
         {/* Nome do projeto */}
         <h3
           className="
             font-title font-semibold tracking-[-0.02em] text-black
-            text-[2rem] leading-[1.05]
-            sm:text-[2.1rem]
+            text-[1.8rem] leading-[1.02]
+            sm:text-[1.95rem]
           "
         >
           {project.title[language]}
@@ -72,14 +72,14 @@ function ProjectCard({ project, language }: ProjectCardProps) {
         {/* Descrição do projeto */}
         <p
           className="
-            mt-5 font-primary text-[16px] leading-[23px] text-black/85
+            mt-4 font-primary text-[16px] leading-[23px] text-black/85
           "
         >
           {project.description[language]}
         </p>
 
         {/* Links posicionados no rodapé do card */}
-        <div className="mt-auto flex items-center gap-4 pt-8 text-black">
+        <div className="mt-auto flex items-center gap-4 pt-6 text-black">
           {project.links.map((link) => (
             <a
               key={`${project.id}-${link.label}`}
