@@ -6,17 +6,16 @@ Código-fonte do meu portfólio pessoal, desenvolvido com foco em organização,
 
 ## Sobre
 
-Este projeto reúne meus trabalhos, tecnologias que utilizo e formas de contato.
+Este é o meu portfólio como desenvolvedora full stack, com foco em aplicações web bem estruturadas, funcionais e visualmente consistentes.
 
-O objetivo é apresentar minhas habilidades como desenvolvedora full stack, conectando front-end, back-end e experiência do usuário em aplicações reais.
+O projeto foi desenvolvido como uma aplicação frontend, priorizando performance, experiência do usuário e clareza visual.
 
 ## Tecnologias
 
 - React
 - TypeScript
+- Vite
 - Tailwind CSS
-- NestJS
-- MySQL
 
 ## Licença
 
