@@ -110,7 +110,7 @@ function About({ language }: AboutProps) {
         </div>
 
         {/* Coluna de texto */}
-        <div className="px-6 pb-20 md:px-10 lg:px-0 lg:pr-16 lg:pb-24">
+        <div className="px-6 pb-8 md:px-10 md:pb-10 lg:px-0 lg:pr-16 lg:pb-24">
           <div className="max-w-[720px]">
             <div
               className="
