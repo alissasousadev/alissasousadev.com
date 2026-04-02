@@ -43,23 +43,30 @@ function Button({
       ? "bg-black/90 text-white ring-1 ring-white/10 backdrop-blur-sm"
       : "bg-white/90 text-black ring-1 ring-black/10 backdrop-blur-sm";
 
+  /* Verifica se o href aponta para um arquivo estático */
+  const isStaticFile =
+    typeof href === "string" &&
+    /\/[^/]+\.[a-zA-Z0-9]+($|\?)/.test(href);
+
   /* Identifica se o link é interno da aplicação */
   const isInternalLink =
-  typeof href === "string" &&
-  href.startsWith("/") &&
-  !href.startsWith("//");
+    typeof href === "string" &&
+    href.startsWith("/") &&
+    !href.startsWith("//") &&
+    !isStaticFile &&
+    target !== "_blank";
 
   function handleInternalClick(event: MouseEvent<HTMLAnchorElement>) {
-  if (!href) return;
+    if (!href) return;
 
-  event.preventDefault();
-  onClick?.();
+    event.preventDefault();
+    onClick?.();
 
-  window.history.scrollRestoration = "manual";
-  window.scrollTo(0, 0);
+    window.history.scrollRestoration = "manual";
+    window.scrollTo(0, 0);
 
-  navigate(href);
-}
+    navigate(href);
+  }
 
   /* Conteúdo interno do botão */
   const content = (
@@ -100,7 +107,7 @@ function Button({
     );
   }
 
-  /* Renderiza link externo */
+  /* Renderiza link externo ou arquivo estático */
   if (href) {
     return (
       <a
