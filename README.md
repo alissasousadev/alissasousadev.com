@@ -1,6 +1,6 @@
 # alissasousadev.com
 
-![status](https://img.shields.io/badge/status-online-success)
+![status](https://img.shields.io/badge/status-online-success) [![Netlify Status](https://api.netlify.com/api/v1/badges/ea734bf5-f041-4898-938e-08bcac4e3e4d/deploy-status)](https://app.netlify.com/projects/alissasousa/deploys)
 
 Código-fonte do meu portfólio pessoal, desenvolvido com foco em organização, usabilidade e identidade visual.
 
